@@ -10,16 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var label: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if let infoDictionary = NSBundle.mainBundle().infoDictionary {
+            let version = infoDictionary["CFBundleShortVersionString"] as! String
+            let build = infoDictionary["CFBundleVersion"] as! String
+            self.label.text = "\(version) (\(build))"
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
